@@ -22,7 +22,7 @@ namespace PokemonGo.Program.Logic
 
             foreach (var item in disordered)
             {
-                Pokemon aux = new Pokemon(item.PokemonId.ToString(), item.IndividualAttack, item.IndividualDefense, item.IndividualStamina);
+                Pokemon aux = new Pokemon(item.PokemonId.ToString(), item.Cp, item.IndividualAttack, item.IndividualDefense, item.IndividualStamina);
                 ordered.Add(aux);
             }
 
@@ -35,7 +35,19 @@ namespace PokemonGo.Program.Logic
         {
             foreach (var item in l)
             {
-                Console.WriteLine(item.Name + ": " + item.Attack + " - " + item.Defense + " - " + item.Stamina + " (" + item.Iv + "%)");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("Name: " + item.Name.PadRight(15));
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("CP: " + item.Cp.ToString().PadRight(10));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write("Attack: " + item.Attack.ToString().PadRight(5));
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("Defense: " + item.Defense.ToString().PadRight(5));
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("Stamina: " + item.Stamina.ToString().PadRight(5));
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("IV: " + item.Iv.ToString() + "%");
+                Console.WriteLine();
             }
         }
     }

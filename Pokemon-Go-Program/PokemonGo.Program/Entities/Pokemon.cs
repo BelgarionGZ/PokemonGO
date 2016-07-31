@@ -4,96 +4,37 @@ namespace PokemonGo.Program.Entities
 {
     class Pokemon : IComparable
     {
-        private string name;
-        private double attack;
-        private double defense;
-        private double stamina;
-        private double iv;
-
-        public Pokemon(string name, double attack, double defense, double stamina)
+        public Pokemon(string name, double cp, double attack, double defense, double stamina)
         {
             this.Name = name;
+            this.Cp = cp;
             this.Attack = attack;
             this.Defense = defense;
             this.Stamina = stamina;
-
-            iv = Math.Round(attack * (20.0 / 9.0) + defense * (20.0 / 9.0) + stamina * (20.0 / 9.0));
+            this.Iv = Math.Round(attack * (20.0 / 9.0) + defense * (20.0 / 9.0) + stamina * (20.0 / 9.0));
         }
 
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
+        public string Name { get; set; }
 
-            set
-            {
-                name = value;
-            }
-        }
+        public double Cp { get; set; }
 
-        public double Attack
-        {
-            get
-            {
-                return attack;
-            }
+        public double Attack { get; set; }
 
-            set
-            {
-                attack = value;
-            }
-        }
+        public double Defense { get; set; }
 
-        public double Defense
-        {
-            get
-            {
-                return defense;
-            }
+        public double Stamina { get; set; }
 
-            set
-            {
-                defense = value;
-            }
-        }
-
-        public double Stamina
-        {
-            get
-            {
-                return stamina;
-            }
-
-            set
-            {
-                stamina = value;
-            }
-        }
-
-        public double Iv
-        {
-            get
-            {
-                return iv;
-            }
-
-            set
-            {
-                iv = value;
-            }
-        }
+        public double Iv { get; set; }
 
         public int CompareTo(Pokemon p)
         {
-            return this.iv.CompareTo(p.iv);
+            return this.Iv.CompareTo(p.Iv);
         }
 
         public int CompareTo(object obj)
         {
             Pokemon p = obj as Pokemon;
-            return this.iv.CompareTo(p.iv);
+            return this.Iv.CompareTo(p.Iv);
         }
     }
 }
